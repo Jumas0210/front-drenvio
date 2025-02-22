@@ -1,0 +1,108 @@
+.special-form {
+    padding: 1rem;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 90px); /* Ajusta esto según la altura de tu Header */
+  }
+  
+  .special-form__container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .special-form__title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .special-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .special-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .special-form__label {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .special-form__select,
+  .special-form__input {
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background:var(--background-color);
+  }
+  
+  .special-form__select:focus,
+  .special-form__input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+  
+  .special-form__submit {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .special-form__submit:hover {
+    background-color: #5452c7;
+    transform: translateY(-2px);
+  }
+  
+  .special-form__submit:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .special-form__message {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  
+  @media (min-width: 768px) {
+    .special-form {
+      padding: 2rem;
+    }
+  
+    .special-form__container {
+      padding: 3rem;
+    }
+  
+    .special-form__title {
+      font-size: 2rem;
+    }
+  }
+  
+  
