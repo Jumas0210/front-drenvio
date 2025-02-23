@@ -17,13 +17,13 @@ export const SpecialForm = () => {
     const [newPrice, setNewPrice] = useState<number | ''>('');
     const [message, setMessage] = useState<string>('');
 
-    const {userID} = useUser(); // se llama el id del usuario que proviene del contexto
+    const {userID} = useUser(); 
 
     useEffect(() => {
             getData();
         }, []); 
 
-    //Funcion para traer todos los productos
+ 
     const getData = async () => {
         try {
           const response = await axios.get<IResponse<IProduct[]>>("http://localhost:5000/products");
@@ -35,22 +35,26 @@ export const SpecialForm = () => {
         }
       };
 
-      //funcion para mandar el precio nuevo
+     
       const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    
+      
         try {
           const payload = {
-            userID: userID,       // El usuario esta en el contexto 
+            userID: userID,       
             productID: selectedProduct,
             specialPrice: newPrice,
           };
-    
-          const specialPrice = await axios.post<IResponse<ISpecial>>('http://localhost:5000/special', payload);
-          setMessage(specialPrice.data.msg);
+      
+          const specialPriceResponse = await axios.post<IResponse<ISpecial>>('http://localhost:5000/special', payload);
+          setMessage(specialPriceResponse.data.msg);
           setNewPrice('');
-        } catch (error) {
-          console.error('Error al solicitar descuento:', error);
+        } catch (error: any) {
+          if (error.response && error.response.data && error.response.data.msg) {
+            setMessage(error.response.data.msg);
+          } else {
+            setMessage('Error al enviar la solicitud.');
+          }
         }
       };
 
