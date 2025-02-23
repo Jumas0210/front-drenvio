@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# Desafío React / MongoDB - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene la aplicación frontend desarrollada con **React** y **TypeScript** para el desafío técnico. La aplicación permite a los usuarios visualizar productos, solicitar precios especiales y gestionar descuentos, comunicándose con la API del backend mediante **Axios**.
+---
 
-Currently, two official plugins are available:
+## Introducción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+La aplicación fue diseñada para interactuar con la API del backend, ofreciendo una interfaz de usuario limpia, modular y fácil de usar. Se utiliza **React** junto con **TypeScript** para mejorar la mantenibilidad y robustez del código gracias al tipado estático. Además, **Axios** se emplea para realizar peticiones HTTP de forma sencilla, y la **Context API** de React permite gestionar el estado global (por ejemplo, la información del usuario) sin necesidad de pasar props excesivamente.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Pasos para ejecutar el proyecto localmente
 
-- Configure the top-level `parserOptions` property like this:
+### 1. Clonar el repositorio
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+   ```bash
+   git clone https://github.com/Jumas0210/front-drenvio.git
+   cd front-drenvio
+  ```
+
+
+## 2. Instalar dependencias y ejecutar el servidor
+
+Instala las dependencias:
+
+```bash
+npm install
+```
+Para ejecutar el servidor en modo desarrollo, utiliza:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Justificación de elecciones técnicas
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+**React con TypeScript:**  
+Permite desarrollar interfaces de usuario dinámicas y modulares, mientras que el tipado estático de TypeScript ayuda a detectar errores en tiempo de desarrollo, mejorando la calidad y mantenibilidad del código.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+**Axios:**  
+Simplifica la realización de peticiones HTTP, permitiendo una comunicación eficiente y sencilla con la API del backend y facilitando el manejo de respuestas basadas en promesas.
+
+**React Context API:**
+Se utiliza para gestionar el estado global de la aplicación, evitando el paso excesivo de props y permitiendo un manejo centralizado de la información del usuario y otros estados compartidos.
+
+## Descripción de la estructura del proyecto
+
+**La estructura actual del proyecto es la siguiente:**
+
+```bash
+src/
+ ├── components/         // Componentes reutilizables (ej. ProductSelect, PriceInput, FormMessage)
+ ├── context/            // Contexto para gestionar la información global del usuario (UserContext)
+ ├── hooks/              // Hooks personalizados de React
+ ├── styles/             // Estilos de la aplicación (CSS/SCSS)
+ ├── utils/
+ │    └── interfaces/    // Definición de interfaces y tipos (TypeScript)
+ └── views/              // Vistas principales de la aplicación (ej. SpecialForm)
+app.tsx                 // Componente raíz de la aplicación
+main.tsx                // Punto de entrada de React (configurado con Vite)
+index.html              // Plantilla HTML
+package.json            // Dependencias y scripts
+tsconfig.json           // Configuración de TypeScript
+vite.config.ts          // Configuración de Vite
+
 ```
+
+
