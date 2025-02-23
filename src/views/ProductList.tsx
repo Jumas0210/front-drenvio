@@ -11,12 +11,14 @@ export const ProductList = () => {
 
     const {userID} = useUser(); // se llama el id del usuario que proviene del contexto
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         getData();
     }, []); 
 
     const getData = async () => {
-        const response = await fetch(`http://localhost:5000/special/${userID}`);
+        const response = await fetch(`${API_URL}/special/${userID}`);
         const products: IResponse<IProduct[]> = await response.json();
         console.log(products);
         console.log(products.data);

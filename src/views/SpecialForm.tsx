@@ -18,6 +18,8 @@ export const SpecialForm = () => {
     const [message, setMessage] = useState<string>('');
 
     const {userID} = useUser(); 
+  
+    const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
             getData();
@@ -26,7 +28,7 @@ export const SpecialForm = () => {
  
     const getData = async () => {
         try {
-          const response = await axios.get<IResponse<IProduct[]>>("http://localhost:5000/products");
+          const response = await axios.get<IResponse<IProduct[]>>(`${API_URL}/products`);
           console.log(response.data);
           console.log(response.data.data);
           setProducts(response.data.data);
@@ -46,7 +48,7 @@ export const SpecialForm = () => {
             specialPrice: newPrice,
           };
       
-          const specialPriceResponse = await axios.post<IResponse<ISpecial>>('http://localhost:5000/special', payload);
+          const specialPriceResponse = await axios.post<IResponse<ISpecial>>(`${API_URL}/special`, payload);
           setMessage(specialPriceResponse.data.msg);
           setNewPrice('');
         } catch (error: any) {

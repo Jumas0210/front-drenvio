@@ -12,6 +12,8 @@ export const ProductTable = () => {
 
     const [data, setData] = useState<IProduct[]>([]);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     const {userID} = useUser(); // se llama el id del usuario que proviene del contexto
 
     useEffect(()=>{
@@ -20,7 +22,7 @@ export const ProductTable = () => {
 
     const getData = async () => {
         try {
-          const response = await axios.get<IResponse<IProduct[]>>(`http://localhost:5000/special/${userID}`);
+          const response = await axios.get<IResponse<IProduct[]>>(`${API_URL}/special/${userID}`);
           console.log(response.data);
           console.log(response.data.data);
           setData(response.data.data);
