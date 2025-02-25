@@ -18,7 +18,7 @@ export const ProductTable = () => {
 
     useEffect(()=>{
         getData();
-    })
+    },[])
 
     const getData = async () => {
         try {
